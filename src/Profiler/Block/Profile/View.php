@@ -25,12 +25,11 @@ class View extends Template
     private $tabs;
 
     public function __construct(
-        RequestInterface $request,
         Storage $storage,
         Template\Context $context,
         array $tabs = []
     ) {
-        $this->request = $request;
+        $this->request = $context->getRequest();
         $this->storage = $storage;
         $this->tabs = $tabs;
 
