@@ -4,7 +4,7 @@
 
 Log in to the Magento server, go to your Magento install dir and run these commands:
 ```
-composer require mirasvit/module-profiler
+composer require mirasvit/module-profiler vcs git@github.com:GRANA/module-profiler.git
 
 php -f bin/magento module:enable Mirasvit_Profiler
 php -f bin/magento setup:upgrade
