@@ -14,6 +14,14 @@ class Html implements OutputInterface
      */
     public function display(Stat $stat)
     {
+        /*
+        * Appending html at the end of every request is not appropiate even in dev env 
+        * because a lot of request won't work eg
+        * the REST API, swagger
+        * We will remove the toolbar at the bottom of the page (when profiler is enabled) as a quick fix
+        * go to <domain>/profiler/profile/index/ to see profiler log
+        */
+        return;
         $objectManager = ObjectManager::getInstance();
 
         /** @var \Mirasvit\Profiler\Model\Config $config */
