@@ -14,14 +14,6 @@ class Html implements OutputInterface
      */
     public function display(Stat $stat)
     {
-        /*
-        * Appending html at the end of every request is not appropiate even in dev env 
-        * because a lot of request won't work eg
-        * the REST API, swagger
-        * We will remove the toolbar at the bottom of the page (when profiler is enabled) as a quick fix
-        * go to <domain>/profiler/profile/index/ to see profiler log
-        */
-        return;
         $objectManager = ObjectManager::getInstance();
 
         /** @var \Mirasvit\Profiler\Model\Config $config */
@@ -48,6 +40,16 @@ class Html implements OutputInterface
         $storage = $objectManager->get('Mirasvit\Profiler\Model\Storage');
 
         $profileId = $storage->dump();
+
+        /*
+        * Appending html at the end of every request is not appropiate even in dev env 
+        * because a lot of request won't work eg
+        * the REST API, swagger
+        *
+        * Removing ouput html toolbar at the bottom of the page (after storage dump) as a quick fix
+        * go to <domain>/profiler/profile/index/ to see profiler log
+        */
+        return;
 
         $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
 
